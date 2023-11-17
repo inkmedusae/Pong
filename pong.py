@@ -42,13 +42,13 @@ secondPaddle.goto(400, 0)
 ball = turtle.Turtle()
 ball.speed(0)
 
-ball.shape("circle")
+ball.shape("square")
 ball.shapesize(stretch_wid=1, stretch_len=1 )
 ball.color("white")
 ball.penup()
 ball.goto(0, 0)
-ball.dx = 2
-ball.dy = 2
+ball.dx = 3.5
+ball.dy = 3.5
 
 #  game mechanics
 main.listen()
