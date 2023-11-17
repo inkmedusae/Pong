@@ -6,6 +6,17 @@ main.title("Pong - wd")
 main.bgcolor("black")
 main.setup(width=900, height=600)
 main.tracer
+playerOne_Score = 0
+playerTwo_Score = 0
+
+pen = turtle.Turtle()
+pen.speed(0)
+pen.shape("square")
+pen.color("white")
+pen.penup()
+pen.hideturtle()
+pen.goto(0, 260)
+pen.write("Player A: 0  Player B: 0", align="center", font=("Courier", 20, "normal"))
 
 # first paddle characteristics
 firstPaddle = turtle.Turtle()
@@ -75,6 +86,23 @@ while True:
     elif ball.ycor() < -290:
         ball.sety(-290)
         ball.dy *= -1
-    elif ball.xcor() > 440 or ball.xcor() < -440:
+    elif ball.xcor() > 440:
         ball.goto(0, 0)
+        ball.dx *= -1
+        playerOne_Score += 1
+        pen.clear()
+        pen.write("Player A: {}  Player B: {}".format(playerOne_Score, playerTwo_Score), align="center", font=("Courier", 20, "normal"))
+    elif ball.xcor() < -440:
+        ball.goto(0, 0)
+        ball.dx *= -1
+        playerTwo_Score += 1
+        pen.clear()
+        pen.write("Player A: {}  Player B: {}".format(playerOne_Score, playerTwo_Score), align="center", font=("Courier", 20, "normal"))
+
+
+    # collisions with paddle
+    if ball.xcor() < -380 and ball.ycor() < firstPaddle.ycor() + 60 and ball.ycor() > firstPaddle.ycor() - 60:
+        ball.dx *= -1 
+    
+    elif ball.xcor() > 380 and ball.ycor() < secondPaddle.ycor() + 60 and ball.ycor() > secondPaddle.ycor() - 60:
         ball.dx *= -1
