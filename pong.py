@@ -5,7 +5,7 @@ main = turtle.Screen()
 main.title("Pong - wd")
 main.bgcolor("black")
 main.setup(width=900, height=600)
-main.tracer
+main.tracer(1)
 playerOne_Score = 0
 playerTwo_Score = 0
 
